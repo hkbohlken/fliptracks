@@ -1,0 +1,51 @@
+﻿<h1>Create Item</h1>
+
+<form method="post">
+    <label>Name:</label>
+    <input type ="text" name="Name" />
+
+    <label>Category</label>
+    <select name="Category">
+        <option value="">-- Select a Category --</option>
+        <option value="Sports">Sports</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Books">Books</option>
+        <option value="Home Goods">Home Goods</option>
+    </select>
+
+    <label>Purchase Source</label>
+    <select name="PurchaseSource" id="purchaseSourceSelect">
+        <option value="">-- Select Source --</option>
+        <option value="FB Marketplace">FB Marketplace</option>
+        <option value="Craigslist">Craigslist</option>
+        <option value="City Thrift">City Thrift</option>
+        <option value="Goodwill">Goodwill</option>
+        <option value="Walmart">Walmart</option>
+        <option value="Target">Target</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <input type="text" id="otherSourceInput" name="OtherPurchaseSource" placeholder="Enter other source" style="display:none;" />
+
+    <label>Purchase Price:</label>
+    <input type="number" step="0.01" name="PurchasePrice" />
+
+    <label>Purchase Date:</label>
+    <input type="date" name="PurchaseDate" />
+
+    <button type="submit">Save</button>
+</form>
+
+<script>
+    const select = document.getElementById("purchaseSourceSelect");
+    const otherInput = document.getElementById("otherSourceInput");
+
+    select.addEventListener("change", function () {
+        if (select.value === "Other") {
+            otherInput.style.display = "block";
+        } else {
+            otherInput.style.display = "none";
+            otherInput.value = "";
+        }
+    });
+</script>

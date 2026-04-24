@@ -1,0 +1,53 @@
+﻿@model FlipTracks.Models.Item
+
+<h1>Edit Item</h1>
+
+<form method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <label>Name:</label>
+    <input type="text" name="Name" value="@Model.Name" />
+
+    <label>Category:</label>
+    <select asp-for="Category" asp-items="ViewBag.Categories"></select>
+
+    <label>Purchase Source:</label>
+    <select id="purchaseSourceSelect" name="PurchaseSource">
+        <option value="">-- Select Source --</option>
+        <option value="FB Marketplace">FB Marketplace</option>
+        <option value="Craigslist">Craigslist</option>
+        <option value="City Thrift">City Thrift</option>
+        <option value="Goodwill">Goodwill</option>
+        <option value="Walmart">Walmart</option>
+        <option value="Target">Target</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label>Purchase Price:</label>
+    <input type="number" step="0.01" name="PurchasePrice" value="@Model.PurchasePrice" />
+
+    <label>Purchase Date:</label>
+    <input type="date" name="PurchaseDate" value="@Model.PurchaseDate.ToString("yyyy-MM-dd")" />
+
+    <input type="text"
+           id="otherSourceInput"
+           name="OtherPurchaseSource"
+           value=""
+           placeholder="Enter other source"
+           style="display:none;" />
+
+    <button type="submit">Save</button>
+</form>
+
+<script>
+    const select = document.getElementById("purchaseSourceSelect");
+    const otherInput = document.getElementById("otherSourceInput");
+
+    select.addEventListener("change", function () {
+        if (select.value === "Other") {
+            otherInput.style.display = "block";
+        } else {
+            otherInput.style.display = "none";
+            otherInput.value = "";
+        }
+    });
+</script>

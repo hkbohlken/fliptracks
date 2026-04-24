@@ -1,0 +1,84 @@
+﻿@model List<FlipTracks.Models.Item>
+
+<h1>Items Page</h1>
+<p>Count: @Model.Count</p>
+<a href="/Items/Create">Add New Item</a>
+
+@if (Model.Count == 0)
+{
+    <p>No items yet.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Source</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Sale Source</th>
+                <th>Sale Price</th>
+                <th>Sale Date</th>
+                <th>Profit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Category</td>
+                    <td>@item.PurchaseSource</td>
+                    <td>@item.PurchasePrice.ToString("C")</td>
+                    <td>@item.PurchaseDate.ToString("MMM dd, yyyy")</td>
+
+                    <td>
+                        @if (item.SalePrice == null)
+                        {
+                            <span>Unsold</span>
+                        }
+                        else
+                        {
+                            <span>Sold</span>
+                        }
+                    </td>
+
+                    <td>@item.SaleSource</td>
+                    <td>@(item.SalePrice?.ToString("C") ?? "")</td>
+                    <td>@(item.SaleDate?.ToString("MMM dd, yyyy") ?? "")</td>
+                    <td>
+                        @if (item.Profit >= 0)
+                        {
+                            <span style="color: green">@item.Profit.ToString("C")</span>
+                        }
+                        else
+                        {
+                            <span style="color: red">@item.Profit.ToString("C")</span>
+                        }
+                    </td>
+
+                    <td>
+                        <a href="/Items/Edit/@item.Id">Edit</a>
+
+                        <form method="post" action="/Items/Delete/@item.Id" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                        </form>
+
+                        @if (item.SalePrice == null)
+                        {
+                            <a href="/Items/Sell/@item.Id">Mark Sold</a>
+                        }
+                        else
+                        {
+                            <a href="/Items/Sell/@item.Id">Edit Sale</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
