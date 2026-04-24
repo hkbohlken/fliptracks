@@ -89,7 +89,7 @@ It was built to simulate a real-world flipping/resale workflow where items are b
 
 ## Getting Started
 
-1. Clone the repository: git clone https://github.com/YOUR_USERNAME/FlipTracks.git
+1. Clone the repository: git clone https://github.com/hkbohlken/FlipTracks.git
 2. Navigate into the project: cd Fliptracks
 3. Run the application: dotnet run
 4. Open in browser: http://localhost:xxxx
