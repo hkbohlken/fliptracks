@@ -84,6 +84,9 @@ It was built to simulate a real-world flipping/resale workflow where items are b
 ### Create Item
 ![Create](screenshots/create.png)
 
+### Edit Item
+![Edit](screenshots/edit.png)
+
 ### Sell Item
 ![Sell](screenshots/sell.png)
 
