@@ -78,7 +78,14 @@ It was built to simulate a real-world flipping/resale workflow where items are b
 
 ## Screenshots
 
-*(Add screenshots here once you upload to GitHub)*
+### Items Table
+![Items](screenshots/main.png)
+
+### Create Item
+![Create](screenshots/create.png)
+
+### Sell Item
+![Sell](screenshots/sell.png)
 
 - Items Table
 - Create Item Form
